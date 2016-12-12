@@ -10,9 +10,9 @@
 @class JJAttributedTextView;
 
 @protocol JJAttributedTextViewDelegate <NSObject>
-- (void)replyTextViewDidTap:(JJAttributedTextView *)textView;
-- (void)replyTextViewDidLongPress:(JJAttributedTextView *)textView;
-- (void)replyTextView:(JJAttributedTextView *)textView didSelectLinkWithURL:(NSURL *)url;
+- (void)textViewDidTap:(JJAttributedTextView *)textView;
+- (void)textViewDidLongPress:(JJAttributedTextView *)textView;
+- (void)textView:(JJAttributedTextView *)textView didSelectLinkWithURL:(NSURL *)url;
 @end
 
 

@@ -112,7 +112,7 @@
     __weak typeof(self) weakSelf = self;
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         if (weakSelf.touchBeginTime > 0) {
-            [weakSelf.touchEventDelegate replyTextViewDidLongPress:self];
+            [weakSelf.touchEventDelegate textViewDidLongPress:self];
         }
     });
 }
@@ -126,14 +126,14 @@
     CGPoint point = [touch locationInView:self];
     self.activeLink = [self linkAtPoint:point];
     if (self.activeLink) {
-        [self.touchEventDelegate replyTextView:self didSelectLinkWithURL:self.activeLink.URL];
+        [self.touchEventDelegate textView:self didSelectLinkWithURL:self.activeLink.URL];
         self.activeLink = nil;
     } else {
         NSUInteger tapCount = touch.tapCount;
         if (tapCount == 0) {
             [[self nextResponder] touchesEnded:touches withEvent:event];
         } else if (tapCount == 1) {
-            [self.touchEventDelegate replyTextViewDidTap:self];
+            [self.touchEventDelegate textViewDidTap:self];
         }
     }
     self.touchBeginTime = 0;
